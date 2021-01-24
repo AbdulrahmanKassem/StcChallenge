@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/white_rounded_8dp_filled"
-            android:paddingVertical="4dp"
+            android:paddingVertical="6dp"
             android:paddingHorizontal="8dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="8dp"
@@ -43,11 +43,24 @@
                 app:loadImage="@{senator.party==PartyType.Democrat ? @drawable/democratic_logo: @drawable/republican_logo}"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_refresh"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="2dp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_senator"
+                app:layout_constraintTop_toTopOf="@+id/iv_senator"
+                android:src="@drawable/ic_guest"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+
+
             <TextView
                 android:id="@+id/tv_senator_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="16dp"
                 android:text="@{senator.person.name}"
                 android:textColor="@color/text_color"
                 app:layout_constraintBottom_toTopOf="@+id/tv_party"
@@ -60,8 +73,7 @@
                 android:id="@+id/tv_party"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="16dp"
                 android:text="@{senator.party.name}"
                 android:textColor="@color/text_color"
                 app:layout_constraintBottom_toTopOf="@+id/tv_desc"
@@ -74,8 +86,7 @@
                 android:id="@+id/tv_desc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="16dp"
                 android:text="@{senator.description}"
                 android:textColor="@color/light_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
