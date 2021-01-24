@@ -11,11 +11,6 @@ import com.example.stcchallenge.R
 import com.example.stcchallenge.adapters.SenatorsAdapter
 import com.example.stcchallenge.databinding.FragmentSenatorsListBinding
 import com.example.stcchallenge.models.Senator
-import com.example.stcchallenge.repo.SenatorsRequests.Companion.GET_SENATORS_LIST
-import com.example.stcchallenge.utils.DevPrint
-import com.example.stcchallenge.utils.FetchMockData.loadStoreData
-import com.example.stcchallenge.utils.SpacesItemDecoration
-import com.example.stcchallenge.utils.getSizeInDP
 import kotlinx.android.synthetic.main.fragment_senators_list.*
 
 class SenatorsListFragment : Fragment(), SenatorsListPresenter.View {
@@ -48,7 +43,6 @@ class SenatorsListFragment : Fragment(), SenatorsListPresenter.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (senatorsAdapter.isEmpty()) {
-
             senatorsAdapter.onSenatorClick = {
                 findNavController().navigate(
                     R.id.action_senatorsListFragment_to_senatorDetailsFragment,
@@ -56,35 +50,18 @@ class SenatorsListFragment : Fragment(), SenatorsListPresenter.View {
             }
 
             initViews()
-
-            presenter.getSenatorsList(GET_SENATORS_LIST, viewLifecycleOwner)
+            presenter.getSenatorsList(requireContext(), viewLifecycleOwner)
         }
     }
 
     private fun initViews() {
-        swipe_refresh.setOnRefreshListener {
-            presenter.getSenatorsList(GET_SENATORS_LIST, viewLifecycleOwner)
-        }
         rv_senators.apply {
             setItemViewCacheSize(20)
             adapter = senatorsAdapter
         }
     }
 
-    override fun updateList() {
-        senatorsAdapter.updateList(loadStoreData(requireContext()))
-    }
-
-    override fun showError(errorMessage: String?) {
-        DevPrint.printError(errorMessage)
-    }
-
-
-    override fun showProgressBar() {
-        swipe_refresh?.isRefreshing = true
-    }
-
-    override fun hideProgressBar() {
-        swipe_refresh?.isRefreshing = false
+    override fun updateList(newList: ArrayList<Senator>) {
+        senatorsAdapter.updateList(newList)
     }
 }

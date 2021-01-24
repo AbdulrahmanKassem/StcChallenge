@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import org.json.JSONObject
 import java.io.IOException
 
-object FetchMockData {
+object FetchJsonData {
     private fun loadJSONFromAssetBy(context: Context): String? {
         val json: String
         try {
