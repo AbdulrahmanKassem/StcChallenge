@@ -7,7 +7,7 @@ import com.example.stcchallenge.utils.FetchJsonData
 
 open class SenatorsListPresenter(private var view: View? = null) {
 
-    open fun getSenatorsList(context: Context, lifecycleOwner: LifecycleOwner) {
+    open fun getSenatorsList(context: Context) {
         view?.updateList(FetchJsonData.loadStoreData(context))
     }
 

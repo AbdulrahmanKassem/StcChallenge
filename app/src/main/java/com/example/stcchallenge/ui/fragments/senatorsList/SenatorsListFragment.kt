@@ -50,7 +50,7 @@ class SenatorsListFragment : Fragment(), SenatorsListPresenter.View {
             }
 
             initViews()
-            presenter.getSenatorsList(requireContext(), viewLifecycleOwner)
+            presenter.getSenatorsList(requireContext())
         }
     }
 

@@ -10,172 +10,184 @@
             type="com.example.stcchallenge.models.Senator" />
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".ui.fragments.SenatorDetailsFragment">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/arrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="6dp"
+            android:translationZ="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onBackPressed="@{true}"
+            app:srcCompat="@drawable/left_arrow" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/arrow"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:paddingStart="12dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="6dp"
-                android:translationZ="100dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:onBackPressed="@{true}"
-                app:srcCompat="@drawable/left_arrow" />
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/arrow">
 
-
-            <include
-                android:id="@+id/cell_senator_details"
-                layout="@layout/cell_senator_details"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/arrow"
-                app:senator="@{senator}" />
-
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/address_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cell_senator_details"
-                app:text="@{senator.extra.address}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_address"
-                app:title_color="@color/light_text_color" />
+                tools:context=".ui.fragments.SenatorDetailsFragment">
 
 
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/office_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/address_view"
-                app:text="@{senator.extra.office}"
-                app:text_color="@color/text_color"
-                app:title="office:"
-                app:title_color="@color/light_text_color" />
+                <include
+                    android:id="@+id/cell_senator_details"
+                    layout="@layout/cell_senator_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:senator="@{senator}" />
 
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/name_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/office_view"
-                app:text="@{senator.getSenatorName()}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_name"
-                app:title_color="@color/light_text_color" />
-
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/birthday_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name_view"
-                app:text="@{senator.person.birthday}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_birthday"
-                app:title_color="@color/light_text_color" />
-
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/end_date_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/birthday_view"
-                app:text="@{senator.enddate}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_end_date"
-                app:title_color="@color/light_text_color" />
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/address_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cell_senator_details"
+                    app:text="@{senator.extra.address}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_address"
+                    app:title_color="@color/light_text_color" />
 
 
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/gender_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/end_date_view"
-                app:text="@{senator.person.gender}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_gender"
-                app:title_color="@color/light_text_color" />
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/office_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_view"
+                    app:text="@{senator.extra.office}"
+                    app:text_color="@color/text_color"
+                    app:title="office:"
+                    app:title_color="@color/light_text_color" />
+
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/name_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/office_view"
+                    app:text="@{senator.getSenatorName()}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_name"
+                    app:title_color="@color/light_text_color" />
+
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/birthday_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_view"
+                    app:text="@{senator.person.birthday}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_birthday"
+                    app:title_color="@color/light_text_color" />
+
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/end_date_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/birthday_view"
+                    app:text="@{senator.enddate}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_end_date"
+                    app:title_color="@color/light_text_color" />
 
 
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/sort_name_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gender_view"
-                app:text="@{senator.person.sortname}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_sort_name"
-                app:title_color="@color/light_text_color" />
-
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/website_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sort_name_view"
-                app:text="@{senator.website}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_website"
-                app:title_color="@color/light_text_color" />
-
-            <com.example.stcchallenge.views.InformationView
-                android:id="@+id/phone_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/website_view"
-                app:text="@{senator.phone}"
-                app:text_color="@color/text_color"
-                app:title="@string/title_phone"
-                app:title_color="@color/light_text_color" />
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/gender_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/end_date_view"
+                    app:text="@{senator.person.gender}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_gender"
+                    app:title_color="@color/light_text_color" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/sort_name_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_view"
+                    app:text="@{senator.person.sortname}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_sort_name"
+                    app:title_color="@color/light_text_color" />
 
-    </ScrollView>
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/website_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sort_name_view"
+                    app:text="@{senator.website}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_website"
+                    app:title_color="@color/light_text_color" />
+
+                <com.example.stcchallenge.views.InformationView
+                    android:id="@+id/phone_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/website_view"
+                    app:text="@{senator.phone}"
+                    app:text_color="@color/text_color"
+                    app:title="@string/title_phone"
+                    app:title_color="@color/light_text_color" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
