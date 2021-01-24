@@ -1,7 +1,9 @@
 package com.example.stcchallenge.utils
 
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
+import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -24,6 +26,17 @@ object ViewBinding {
     @BindingAdapter("text")
     fun text(view: InformationView, text: String) {
         view.setInformation(text)
+    }
+
+    @JvmStatic
+    @BindingAdapter("onBackPressed")
+    fun bindOnBackPressed(view: View, onBackPress: Boolean) {
+        val context = view.context
+        if (onBackPress && context is OnBackPressedDispatcherOwner) {
+            view.setOnClickListener {
+                context.onBackPressedDispatcher.onBackPressed()
+            }
+        }
     }
 
 }

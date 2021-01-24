@@ -16,7 +16,8 @@ class SenatorsRequests : BaseRequest<ApiSenator>(ApiSenator::class.java) {
     internal fun makeRequest(reqId: Int): LiveData<Resource<*>> {
         return liveData(Dispatchers.IO) {
             emit(Resource.loading<Any>(reqId = reqId))
-            handleRequest(reqId = reqId)?.let { emit(it) }
+            emit(Resource.success<Any>(reqId = reqId, data = null))
+//            handleRequest(reqId = reqId)?.let { emit(it) }
             emit(Resource.done<Any>(reqId = reqId))
         }
     }

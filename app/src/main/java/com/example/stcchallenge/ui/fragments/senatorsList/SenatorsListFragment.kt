@@ -67,18 +67,15 @@ class SenatorsListFragment : Fragment(), SenatorsListPresenter.View {
         }
         rv_senators.apply {
             setItemViewCacheSize(20)
-            val dim8 = getSizeInDP(8F)
-            addItemDecoration(SpacesItemDecoration(intArrayOf(dim8, dim8, dim8, dim8)))
             adapter = senatorsAdapter
         }
     }
 
-    override fun updateList(newList: ArrayList<Senator>) {
+    override fun updateList() {
         senatorsAdapter.updateList(loadStoreData(requireContext()))
     }
 
     override fun showError(errorMessage: String?) {
-        senatorsAdapter.updateList(loadStoreData(requireContext()))
         DevPrint.printError(errorMessage)
     }
 

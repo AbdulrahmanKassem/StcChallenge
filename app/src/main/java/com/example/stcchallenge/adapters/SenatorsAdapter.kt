@@ -32,7 +32,7 @@ class SenatorsAdapter : RecyclerView.Adapter<SenatorsAdapter.ItemViewHolder>() {
     }
 
     internal fun updateList(newItems: ArrayList<Senator>) {
-        newItems.sortBy { it.lastName }
+        newItems.sortBy { it.person?.lastname }
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()

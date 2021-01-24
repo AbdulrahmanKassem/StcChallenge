@@ -14,7 +14,7 @@ open class SenatorsListPresenter(private var view: View? = null) {
             .observe(lifecycleOwner, { theResponse ->
                 when (theResponse.status) {
                     Status.SUCCESS -> {
-
+                        view?.updateList()
                     }
                     Status.ERROR -> view?.showError(theResponse.data.cast<BaseModel.Error>()?.message)
                     Status.LOADING -> view?.showProgressBar()
@@ -24,7 +24,7 @@ open class SenatorsListPresenter(private var view: View? = null) {
     }
 
     interface View {
-        fun updateList(newList: ArrayList<Senator>)
+        fun updateList()
         fun showError(errorMessage: String?)
         fun showProgressBar()
         fun hideProgressBar()

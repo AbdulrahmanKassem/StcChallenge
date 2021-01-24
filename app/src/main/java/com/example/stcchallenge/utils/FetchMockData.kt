@@ -34,6 +34,6 @@ object FetchMockData {
     fun loadStoreData(context: Context): ArrayList<Senator> {
         val appDataJSON = JSONObject(loadJSONFromAssetBy(context))
         val senators = Gson().fromJson(appDataJSON.toString(), ResponseListModel::class.java)
-        return senators.data?: ArrayList()
+        return senators.objects?: ArrayList()
     }
 }
